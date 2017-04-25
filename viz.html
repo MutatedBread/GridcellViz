@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .top_container{
+        height: 50px;
+        border-bottom: 2px solid black;
+      }
+      .top_container > #top_item{
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
+      .lower_container{
+        height: 200px;
+        border-bottom: 2px solid black;
+      }
+      .lower_container > table{
+        width: 100%;
+      }
+      .lower_container > table > p{
+        text-align: center;
+      }
+      .bottom_container{
+        height: 50px;
+        border-bottom: 2px solid black;
+      }
+      .bottom_container > #bottom_item{
+        position: relative;
+        top: 10px;
+        left: 10px;
+      }
+    </style>
+  <script>
+  function populateGrid(values){
+    for(var i = 0; i < values.length; i++){
+      if(values[i] == true){
+        document.getElementById((i+1).toString() + "_cell").style.backgroundColor  = "brown";
+      }else{
+        document.getElementById((i+1).toString() + "_cell").style.backgroundColor  = "lightgreen";
+      }
+    }
+  }
+  </script>
+    <link rel="stylesheet" href="https://ssl.gstatic.com/docs/script/css/add-ons1.css">
+    <base target="_top">
+  </head>
+  <body>
+    <div class= "top_container">
+      <button id="top_item" class="action" onclick="google.script.run.withSuccessHandler(populateGrid).getGridInfo()">Refresh Grid</button> 
+    </div>
+    <div class= "lower_container">
+    <table tag= "table">
+    <tr>
+      <td id="1_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+      <td id="2_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+      <td id="3_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+    </tr>
+    <tr>
+      <td id="4_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+      <td>
+      <p> </p>
+      </td>
+      <td id="5_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+    </tr>
+    <tr>
+      <td id="6_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+      <td id="7_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+      <td id="8_cell" style="background-color: lightblue">
+      <p> </p>
+      </td>
+    </tr>
+    </table>
+    <b>Select grid value : </b>
+    <select onchange="google.script.run.selectValue(this.value)">
+      <option value= 1 label="Grass">item</option>
+      <option value= 2 label="Sand">item</option>
+      <option value= 3 label="Metal">item</option>
+      <option value= 4 label="Forest">item</option>
+      <option value= 5 label="Mountain">item</option>
+    </select>
+    </div>
+    <div class= "bottom_container">
+      <button id="bottom_item" class="action" onclick="google.script.run.nextRow()">Next Row</button> 
+    </div>
+  </body>
+</html>
